@@ -1,0 +1,63 @@
+body {
+    background-color: rgb(101, 35, 31);  
+}
+
+
+header nav a {
+    text-decoration: none;    
+    color: white;
+}
+
+#logout{
+    background-color:  rgb(101, 35, 31);
+    color: white;
+    border: none;
+}
+
+header .mainBlog {
+    background-color:  #744934;
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: solid black 1px;
+    padding: 2px;
+}
+
+h2{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form a {
+    color: white;
+}
+
+h3{
+    color: white;
+}
+
+.new-blog-form{
+    display: block;
+    color: white;
+}
+
+#blog-title{
+    width: 100%;
+}
+
+#blog-content{
+    width: 100%;
+}
+
+p{
+    color: white;
+}
+

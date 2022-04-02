@@ -40,7 +40,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     try {
     const blogDel = await Blog.destroy({
         where: {
-            id: req.params.session.user_id,
+            id: req.params.session.id,
             user_id: req.session.user_id,
         },
     });
@@ -61,3 +61,4 @@ router.delete('/:id', withAuth, async (req, res) => {
 
 
 module.exports = router;
+
