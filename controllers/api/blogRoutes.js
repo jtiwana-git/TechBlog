@@ -16,27 +16,39 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 router.put('/:id', withAuth, async (req, res) => {
+ 
   try {
-    const blogUpdate = await Blog.update(req.body, {
-      where: {
-        id: req.params.id,
+    const updatedBlog = await Blog.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.id,
+          user_id: req.session.user_id,
 
+        },
       }
-    })
-    if(!blogUpdate) {
-      res.status(404).json({ message: "Can't update" });
+    );
+    if (!updatedBlog) {
+      res.status(404).json({ message: 'No blog found with this Blog id' });
       return;
-  }
-  res.status(404).json(blogUpdate);
-} catch (err) {
-    
-res.status(500).json(err);
+    }
 
+    res.json(updatedBlog);
+  } catch (err) {
+    res.status(500).json(err);
   }
-})
+});
+
+
+
 
 router.delete('/:id', withAuth, async (req, res) => {
+ 
   try {
+    console.log("Path " + router)
     const blogData = await Blog.destroy({
       where: {
         id: req.params.id,
@@ -45,6 +57,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!blogData) {
+      console.log("Path " + router)
       res.status(404).json({ message: 'No blog found with this id!' });
       return;
     }
@@ -53,6 +66,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+
 });
 
 
